@@ -15,9 +15,9 @@ if(isset($_POST['usernamE'] && isset($_POST['password']))
 	$password=htmlentities(mysqli_real_escape_string($connection,$_POST['password']));
 
 
- $err_s = 0;
+	 $err_s = 0;
 
-if(empty($username))
+		if(empty($username))
 		{
 
 			$user_error = 'please enter your username <br>';
@@ -25,14 +25,13 @@ if(empty($username))
 		}
 
 
-
 		if(empty($password))
-    {
+   		 {
 
-      $pass_error = 'please insert a password <br>';
-      $err_s = 1;
-        include('home.php');
-    }
+     		 $pass_error = 'please insert a password <br>';
+      		$err_s = 1;
+      	        include('home.php');
+                 }
     
 
 if(!isset($err_s)){
@@ -44,9 +43,18 @@ if(!isset($err_s)){
 
 $_SESSION['username'] =$row['username'];
 $_SESSION['id'] =$row['id'];
+		header('location:home.php');
+		exit();
 
 }
-}
+else{
+	
+	$user_error = '<p id ="error" > wrong data<p>;
+	include('home.php');
+	exit();
+	}
+	
+	
 
 
 
